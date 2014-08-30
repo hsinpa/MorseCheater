@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MorseCheater</string>
+    <string name="action_settings">Settings</string>
+
+    //MenuLabel
+    <string name="morseCreate">Create Project</string>
+    <string name="morseEdit">Edit</string>
+
+
+    //Button
+    <string name="cancel">Cancel</string>
+    <string name="submit">Submit</string>
+
+    <string name="create">Create</string>
+    <string name="empty">EMPTY&#8230;</string>
+    <string name="edit">Edit</string>
+    <string name="play">Play</string>
+    <string name="save">Save</string>
+    <string name="upload">Upload</string>
+
+    //Placeholder
+    <string name="name">Name</string>
+
+    //Toast
+    <string name="wrongInput">Input Format Incorrect</string>
+    <string name="ApiOutdated">Updating Android version is not a bad choice</string>
+
+</resources>
