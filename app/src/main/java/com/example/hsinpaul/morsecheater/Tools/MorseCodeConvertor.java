@@ -90,6 +90,7 @@ public class MorseCodeConvertor {
         long[] pattern = patternConvert(morseString);
 
 // Only perform this pattern one time (-1 means "do not repeat")
+
         Vibrator mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         if (mVibrator.hasVibrator()) {
             mVibrator.vibrate(pattern, -1);

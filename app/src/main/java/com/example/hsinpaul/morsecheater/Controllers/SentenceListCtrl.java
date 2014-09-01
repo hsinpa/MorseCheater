@@ -3,6 +3,7 @@ package com.example.hsinpaul.morsecheater.Controllers;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.hsinpaul.morsecheater.Home;
@@ -139,7 +142,7 @@ public class SentenceListCtrl extends Fragment {
             //0=id, 1 = last_update_time, 2=sentence, 3=morsecode, 4 = preview code, 5 = color
             holder.sentence.setText(data.get(2));
             holder.time.setText(data.get(1));
-            holder.playButton.setBackgroundColor(Color.parseColor(data.get(5)));
+            holder.playHolder.setBackgroundColor(Color.parseColor(data.get(5)));
 
             holder.playButton.setOnClickListener(new View.OnClickListener() {
 
@@ -159,11 +162,13 @@ public class SentenceListCtrl extends Fragment {
             TextView time;
             TextView sentence;
             Button playButton;
+            RelativeLayout playHolder;
 
             public MyViewHolder(View v) {
                 sentence = (TextView) v.findViewById(R.id.sentence);
                 time = (TextView) v.findViewById(R.id.list_time);
                 playButton = (Button) v.findViewById(R.id.sentence_play);
+                playHolder = (RelativeLayout) v.findViewById(R.id.sentence_playHolder);
             }
         }
     }

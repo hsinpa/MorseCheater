@@ -37,16 +37,20 @@
     </LinearLayout>
 
     <!-- Play Button -->
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/blue"
+        android:id="@+id/sentence_playHolder"
         android:layout_weight="5">
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
             android:id="@+id/sentence_play"
-            android:background="@color/blue"
-        />
-    </LinearLayout>
+            android:background="@drawable/playonce"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 </LinearLayout>
