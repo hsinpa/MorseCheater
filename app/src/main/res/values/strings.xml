@@ -6,7 +6,7 @@
 
     //MenuLabel
     <string name="morseCreate">Create Project</string>
-    <string name="morseEdit">Edit</string>
+    <string name="morseEdit">Edit Code</string>
 
 
     //Button

@@ -18,11 +18,10 @@ public class Sentences  {
         db = Home.db;
     }
 
-    public Cursor getSentences( int projectId ) {
-        String q = "SELECT title, Sentences.*"+
-                " FROM "+ MorseContract.SentenceEntry.TABLE_NAME +
-                " LEFT JOIN Projects ON Sentences.project_id = Projects.id"+
-                " WHERE Sentences.project_id = "+projectId;
+    public Cursor getSentence( int id ) {
+        String q = "SELECT *"+
+                " FROM " + MorseContract.SentenceEntry.TABLE_NAME +
+                " WHERE " + MorseContract.SentenceEntry._ID +" = " + id;
 
         Cursor cursor = db.rawQuery(q, new String[]{});
         return cursor;
@@ -32,15 +31,6 @@ public class Sentences  {
         String q = "SELECT *"+
                 " FROM "+ MorseContract.MorseCodeEntry.TABLE_NAME;
 
-        Cursor cursor = db.rawQuery(q, new String[]{});
-        return cursor;
-    }
-
-    public Cursor getProjectDetails( int id ) {
-        String q = "SELECT Projects.id AS projectId, title, Sentences.id AS sentenceId, sentence," +
-                " morsecode, Sentences.last_update_time" +
-                " FROM "+MorseContract.ProjectEntry.TABLE_NAME +
-                " INNER JOIN Sentences ON Sentences.project_id = Projects.id";
         Cursor cursor = db.rawQuery(q, new String[]{});
         return cursor;
     }

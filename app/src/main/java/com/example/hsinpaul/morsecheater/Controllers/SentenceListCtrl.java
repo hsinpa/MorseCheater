@@ -1,6 +1,7 @@
 package com.example.hsinpaul.morsecheater.Controllers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -60,6 +62,15 @@ public class SentenceListCtrl extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putInt("projectId", projectId );
                 ((Home)getActivity()).changeFragment(new CreateSentenceCtrl(), bundle);
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(getActivity(), EditSentenceCtrl.class);
+                i.putExtra("sentenceList", myList);
+                startActivity(i);
             }
         });
 
