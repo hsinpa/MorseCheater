@@ -4,10 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,11 +13,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.hsinpaul.morsecheater.EditPageFragment;
 import com.example.hsinpaul.morsecheater.Home;
 import com.example.hsinpaul.morsecheater.Models.Projects;
 import com.example.hsinpaul.morsecheater.R;
@@ -34,7 +33,7 @@ public class SentenceListCtrl extends Fragment {
     public static ListView listView;
     public static ArrayList<ArrayList<String>> myList = new ArrayList<ArrayList<String>>();
     public static String[] colors;
-    public static TextView emptyText;
+    public static ImageView emptyText;
     int projectId;
     public SentenceListCtrl() {
 
@@ -44,7 +43,7 @@ public class SentenceListCtrl extends Fragment {
         View rootView = inflater.inflate(R.layout.projectlist, container, false);
         colors = getResources().getStringArray(R.array.letterColor);
         Button button= (Button) rootView.findViewById(R.id.createButton);
-        emptyText = (TextView) rootView.findViewById(R.id.emptyData);
+        emptyText = (ImageView) rootView.findViewById(R.id.emptyData);
 
         Bundle args = getArguments();
         projectId = args.getInt("projectId", 0);
@@ -68,8 +67,10 @@ public class SentenceListCtrl extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(getActivity(), EditSentenceCtrl.class);
-                i.putExtra("sentenceList", myList);
+                Intent i = new Intent(getActivity(), EditPageFragment.class);
+                i.putExtra("projectId", projectId);
+                i.putExtra("sentencePos", position);
+
                 startActivity(i);
             }
         });

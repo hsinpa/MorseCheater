@@ -19,20 +19,23 @@ public class Sentences  {
     }
 
     public Cursor getSentence( int id ) {
-        String q = "SELECT *"+
+        String q = "SELECT Sentences.*, title"+
                 " FROM " + MorseContract.SentenceEntry.TABLE_NAME +
-                " WHERE " + MorseContract.SentenceEntry._ID +" = " + id;
+                " LEFT JOIN "+ MorseContract.ProjectEntry.TABLE_NAME +" ON "+ MorseContract.ProjectEntry.TABLE_NAME +".id = "+ MorseContract.SentenceEntry.TABLE_NAME+".project_id" +
+                " WHERE " + MorseContract.SentenceEntry.TABLE_NAME +".id = " + id;
 
-        Cursor cursor = db.rawQuery(q, new String[]{});
-        return cursor;
+        return db.rawQuery(q, new String[]{});
     }
 
     public Cursor getMorseCode() {
         String q = "SELECT *"+
                 " FROM "+ MorseContract.MorseCodeEntry.TABLE_NAME;
 
-        Cursor cursor = db.rawQuery(q, new String[]{});
-        return cursor;
+        return db.rawQuery(q, new String[]{});
+    }
+
+    public static void update(ContentValues values, String condition ) {
+        db.update(MorseContract.SentenceEntry.TABLE_NAME, values, condition, null);
     }
 
     public void insert(ContentValues values) {

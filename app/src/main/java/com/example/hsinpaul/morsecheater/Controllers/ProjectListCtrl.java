@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,7 +37,7 @@ public class ProjectListCtrl extends Fragment {
     public static ListView listView;
     public static ArrayList<ArrayList<String>> myList = new ArrayList<ArrayList<String>>();
     public static String[] colors;
-    public static TextView emptyText;
+    public static ImageView emptyText;
 
     public ProjectListCtrl() {
 
@@ -48,7 +49,7 @@ public class ProjectListCtrl extends Fragment {
 
         colors = getResources().getStringArray(R.array.letterColor);
         Button button= (Button) rootView.findViewById(R.id.createButton);
-        emptyText = (TextView) rootView.findViewById(R.id.emptyData);
+        emptyText = (ImageView) rootView.findViewById(R.id.emptyData);
 
         showProjects();
 

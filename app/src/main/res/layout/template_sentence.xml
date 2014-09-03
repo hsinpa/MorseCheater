@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="40sp"
-        android:text="Create"
+        android:text="@string/create"
+        android:id="@+id/detailTitle"
         />
 
     <EditText
@@ -25,6 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="25sp"
         android:text="   Morse Code will shows here"
         android:id="@+id/morseCode"/>
 

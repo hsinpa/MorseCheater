@@ -20,7 +20,7 @@
 
 
         <activity
-            android:name="com.example.hsinpaul.morsecheater.Controllers.EditSentenceCtrl"
+            android:name=".EditPageFragment"
             android:label="@string/morseEdit"
             android:parentActivityName="com.example.hsinpaul.morsecheater.Home" >
             <meta-data

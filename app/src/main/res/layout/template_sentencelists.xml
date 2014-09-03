@@ -51,6 +51,8 @@
             android:id="@+id/sentence_play"
             android:background="@drawable/playonce"
             android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:focusable="false"
+            />
     </RelativeLayout>
 </LinearLayout>
