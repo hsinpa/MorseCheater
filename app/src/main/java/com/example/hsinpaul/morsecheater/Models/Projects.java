@@ -35,7 +35,7 @@ public class Projects {
 
     public Cursor getProjectDetails( int projectId ) {
 
-        String q = "SELECT Sentences.*" +
+        String q = "SELECT Sentences.*, title" +
                 " FROM " + MorseContract.SentenceEntry.TABLE_NAME +
                 " INNER JOIN Projects ON Sentences.project_id = Projects.id" +
                 " WHERE Sentences.project_id = " + projectId;

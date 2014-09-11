@@ -8,6 +8,7 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +65,7 @@ public class ProjectListCtrl extends Fragment {
                  //Call SentenceList Fragment
                 Bundle bundle = new Bundle();
                 bundle.putInt("projectId", Integer.parseInt(myList.get(position).get(3)) );
+                bundle.putString("title", myList.get(position).get(0));
 
                 ((Home)getActivity()).changeFragment(new SentenceListCtrl(), bundle);
             }
@@ -76,6 +78,9 @@ public class ProjectListCtrl extends Fragment {
                 showDialog();
             }
         });
+
+        //Change MenuLabel
+        ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(R.string.home);
 
         return rootView;
     }

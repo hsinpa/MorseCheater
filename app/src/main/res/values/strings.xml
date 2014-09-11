@@ -5,6 +5,8 @@
     <string name="action_settings">Settings</string>
 
     //MenuLabel
+    <string name="home">Code Lists</string>
+
     <string name="morseCreate">Create Project</string>
     <string name="morseEdit">Edit Code</string>
     <string name="editTitle">Edit Time</string>
@@ -29,4 +31,29 @@
     <string name="wrongInput">Input Format Incorrect</string>
     <string name="ApiOutdated">Updating Android version is not a bad choice</string>
 
+    
+    //Preference
+    <string name="wpm">WPM Speed</string>
+    <string name="wpmSelection">Select your WPM Speed</string>
+    <string name="language">Language</string>
+    <string name="languageSelection">Pick your favorite Language</string>
+
+    <string-array name="wpmSpeeds">
+        <item value="10">10 WPM</item>
+        <item value="20">20 WPM</item>
+        <item value="30">30 WPM</item>
+        <item value="40">40 WPM</item>
+    </string-array>
+
+    <string-array name="wpmActualSpeeds">
+        <item value="10">1</item>
+        <item value="20">2</item>
+        <item value="30">3</item>
+        <item value="40">4</item>
+    </string-array>
+
+    <string-array name="languagePool">
+        <item value="English">English</item>
+        <item value="Chineset ">中文</item>
+    </string-array>
 </resources>

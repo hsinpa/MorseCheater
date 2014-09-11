@@ -36,6 +36,7 @@
             android:layout_weight="1"
             android:textSize="35sp"
             android:text="HELO"
+            android:textColor="@color/purple5"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             />
@@ -51,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:textColor="@color/purple5"
             />
         <TextView
                 android:id="@+id/list_sentence"
@@ -58,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:textColor="@color/purple5"
             />
         </LinearLayout>
     </LinearLayout>

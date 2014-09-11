@@ -1,11 +1,15 @@
 package com.example.hsinpaul.morsecheater.Controllers;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +38,10 @@ public class SentenceListCtrl extends Fragment {
     public static ArrayList<ArrayList<String>> myList = new ArrayList<ArrayList<String>>();
     public static String[] colors;
     public static ImageView emptyText;
+    public static String totalCode;
+
     int projectId;
+
     public SentenceListCtrl() {
 
     }
@@ -46,6 +53,7 @@ public class SentenceListCtrl extends Fragment {
         emptyText = (ImageView) rootView.findViewById(R.id.emptyData);
 
         Bundle args = getArguments();
+        String title = args.getString("title");
         projectId = args.getInt("projectId", 0);
 
         //Call database
@@ -70,10 +78,12 @@ public class SentenceListCtrl extends Fragment {
                 Intent i = new Intent(getActivity(), EditPageFragment.class);
                 i.putExtra("projectId", projectId);
                 i.putExtra("sentencePos", position);
-
                 startActivity(i);
             }
         });
+
+        //Change MenuLabel
+        ((ActionBarActivity)getActivity()).getSupportActionBar().setTitle(title);
 
         return rootView;
     }
@@ -97,8 +107,9 @@ public class SentenceListCtrl extends Fragment {
                     singleList.add(cursor.getString(cursor.getColumnIndex("sentence")));
                     singleList.add(cursor.getString(cursor.getColumnIndex("morsecode")));
                     singleList.add(cursor.getString(cursor.getColumnIndex("previewCode")));
-
                     singleList.add(colors[random]);
+                    singleList.add(cursor.getString(cursor.getColumnIndex("title")));
+                    totalCode +=
 
                     myList.add(singleList);
 
@@ -114,6 +125,8 @@ public class SentenceListCtrl extends Fragment {
     class MyAdapter extends BaseAdapter {
 
         ArrayList<ArrayList<String>> projectListArray = new ArrayList<ArrayList<String>>();
+        MyViewHolder holder = null;
+
         Context context;
         public MyAdapter(Context context, ArrayList<ArrayList<String>> arrayList) {
             this.projectListArray = arrayList;
@@ -138,7 +151,6 @@ public class SentenceListCtrl extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View v = convertView;
-            MyViewHolder holder = null;
 
 
             if (v == null) {
@@ -157,13 +169,24 @@ public class SentenceListCtrl extends Fragment {
             holder.playHolder.setBackgroundColor(Color.parseColor(data.get(5)));
 
             holder.playButton.setOnClickListener(new View.OnClickListener() {
+                boolean isPlay = false;
 
+             @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
              @Override
              public void onClick(View v) {
-                 Log.d("vibrate",data.get(3) );
-                 Log.d("vibrate",data.get(4) );
+                 Drawable stop = getResources().getDrawable(R.drawable.stop);
+                 Drawable play = getResources().getDrawable(R.drawable.playonce);
 
-                 MorseCodeConvertor.vibrate(getActivity(), data.get(3));
+                     if (isPlay == false) {
+                         MorseCodeConvertor.vibrate(getActivity(), data.get(3), false);
+                         v.setBackground(stop);
+
+                         isPlay = true;
+                     } else {
+                         MorseCodeConvertor.stopVibrate(getActivity());
+                         holder.playButton.setBackground(play);
+                         isPlay = false;
+                     }
                  }
              });
                     notifyDataSetChanged();

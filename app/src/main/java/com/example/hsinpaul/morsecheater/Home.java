@@ -1,12 +1,17 @@
 package com.example.hsinpaul.morsecheater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -30,6 +35,8 @@ public class Home extends ActionBarActivity {
         //Connect to SQLITE
         Database MorseDB = new Database(getApplicationContext());
         db = MorseDB.getWritableDatabase();
+
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#36175e")));
     }
 
 
@@ -47,6 +54,10 @@ public class Home extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+
+            Intent intent = new Intent();
+            intent.setClass(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -66,4 +77,5 @@ public class Home extends ActionBarActivity {
     // Commit the transaction
             transaction.commit();
     }
+
 }
