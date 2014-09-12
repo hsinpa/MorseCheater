@@ -92,6 +92,8 @@ public class MorseCodeConvertor {
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public static void vibrate(Context context, String morseString, boolean isRepeat) {
+
+        morseString = (isRepeat) ? morseString.substring(0, morseString.length()-1) : morseString;
         SharedPreferences prefs = context.getSharedPreferences(
                 "com.example.hsinpa.morseCode", Context.MODE_PRIVATE);
         int wpmSpeed = Integer.parseInt(prefs.getString("wpm", "10"));

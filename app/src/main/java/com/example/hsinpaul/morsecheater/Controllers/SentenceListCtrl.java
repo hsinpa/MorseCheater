@@ -38,7 +38,7 @@ public class SentenceListCtrl extends Fragment {
     public static ArrayList<ArrayList<String>> myList = new ArrayList<ArrayList<String>>();
     public static String[] colors;
     public static ImageView emptyText;
-    public static String totalCode;
+    public static Button repeatPlay;
 
     int projectId;
 
@@ -46,24 +46,54 @@ public class SentenceListCtrl extends Fragment {
 
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        MorseCodeConvertor.stopVibrate(getActivity());
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.projectlist, container, false);
         colors = getResources().getStringArray(R.array.letterColor);
-        Button button= (Button) rootView.findViewById(R.id.createButton);
+        Button createButton= (Button) rootView.findViewById(R.id.createButton);
         emptyText = (ImageView) rootView.findViewById(R.id.emptyData);
+        repeatPlay = (Button) rootView.findViewById(R.id.repeatPlay);
 
         Bundle args = getArguments();
         String title = args.getString("title");
         projectId = args.getInt("projectId", 0);
 
         //Call database
-        showProjects(projectId);
+        final String totalCode = showProjects(projectId);
 
         listView = (ListView) rootView.findViewById(R.id.projectLists);
         listView.setAdapter(new MyAdapter(getActivity() ,myList));
 
 
-        button.setOnClickListener(new View.OnClickListener() {
+        //Repeat Play
+        repeatPlay.setOnClickListener(new View.OnClickListener() {
+            boolean isPlay = false;
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+            @Override
+            public void onClick(View v) {
+
+                Drawable stop = getResources().getDrawable(R.drawable.stop);
+                Drawable play = getResources().getDrawable(R.drawable.loop);
+
+                if (isPlay == false) {
+                    MorseCodeConvertor.vibrate(getActivity(), totalCode, true);
+                    v.setBackground(stop);
+
+                    isPlay = true;
+                } else {
+                    MorseCodeConvertor.stopVibrate(getActivity());
+                    v.setBackground(play);
+                    isPlay = false;
+                }
+            }
+        });
+        //Create
+        createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
@@ -88,9 +118,10 @@ public class SentenceListCtrl extends Fragment {
         return rootView;
     }
 
-    public static void showProjects(int projectId) {
+    public static String showProjects(int projectId) {
         myList.clear();
         Projects projects = new Projects();
+        String totalCode = "";
 
         Cursor cursor = projects.getProjectDetails(projectId);
 
@@ -102,6 +133,7 @@ public class SentenceListCtrl extends Fragment {
 
                     // do what ever you want here
                     ArrayList<String> singleList = new ArrayList<String>();
+
                     singleList.add(cursor.getString(cursor.getColumnIndex("id")));
                     singleList.add(cursor.getString(cursor.getColumnIndex("last_update_time")));
                     singleList.add(cursor.getString(cursor.getColumnIndex("sentence")));
@@ -109,7 +141,7 @@ public class SentenceListCtrl extends Fragment {
                     singleList.add(cursor.getString(cursor.getColumnIndex("previewCode")));
                     singleList.add(colors[random]);
                     singleList.add(cursor.getString(cursor.getColumnIndex("title")));
-                    totalCode +=
+                    totalCode += cursor.getString(cursor.getColumnIndex("morsecode")) + "6";
 
                     myList.add(singleList);
 
@@ -117,9 +149,11 @@ public class SentenceListCtrl extends Fragment {
             }
             cursor.close();
             emptyText.setVisibility(View.GONE);
+            repeatPlay.setVisibility(View.VISIBLE);
         } else {
             emptyText.setVisibility(View.VISIBLE);
         }
+        return totalCode;
     }
 
     class MyAdapter extends BaseAdapter {
@@ -184,7 +218,7 @@ public class SentenceListCtrl extends Fragment {
                          isPlay = true;
                      } else {
                          MorseCodeConvertor.stopVibrate(getActivity());
-                         holder.playButton.setBackground(play);
+                         v.setBackground(play);
                          isPlay = false;
                      }
                  }
@@ -193,6 +227,7 @@ public class SentenceListCtrl extends Fragment {
 
             return v;
         }
+
         class MyViewHolder {
             TextView time;
             TextView sentence;
@@ -207,6 +242,5 @@ public class SentenceListCtrl extends Fragment {
             }
         }
     }
-
 
 }

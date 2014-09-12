@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.example.hsinpaul.morsecheater.Controllers.ProjectListCtrl;
 import com.example.hsinpaul.morsecheater.Models.Schema.Database;
+import com.example.hsinpaul.morsecheater.Tools.MorseCodeConvertor;
 
 
 public class Home extends ActionBarActivity {
@@ -39,7 +40,6 @@ public class Home extends ActionBarActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#36175e")));
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -54,7 +54,6 @@ public class Home extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-
             Intent intent = new Intent();
             intent.setClass(this, SettingsActivity.class);
             startActivity(intent);
@@ -77,5 +76,4 @@ public class Home extends ActionBarActivity {
     // Commit the transaction
             transaction.commit();
     }
-
 }

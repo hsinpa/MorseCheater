@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.example.hsinpaul.morsecheater.Home;
 import com.example.hsinpaul.morsecheater.Models.Projects;
 import com.example.hsinpaul.morsecheater.R;
+import com.example.hsinpaul.morsecheater.Tools.MorseCodeConvertor;
 
 import org.w3c.dom.Text;
 
