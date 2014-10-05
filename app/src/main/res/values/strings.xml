@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MorseCheater</string>
+    <string name="app_name" translatable="false">MorseCheater</string>
     <string name="action_settings">Settings</string>
 
     //MenuLabel
@@ -45,15 +45,15 @@
         <item value="40">40 WPM</item>
     </string-array>
 
-    <string-array name="wpmActualSpeeds">
+    <string-array name="wpmActualSpeeds" translatable="false">
         <item value="10">1</item>
         <item value="20">2</item>
         <item value="30">3</item>
         <item value="40">4</item>
     </string-array>
 
-    <string-array name="languagePool">
-        <item value="English">English</item>
-        <item value="Chineset ">中文</item>
+    <string-array name="languagePool" translatable="false">
+        <item value="English">en_US</item>
+        <item value="Chinese">中文</item>
     </string-array>
 </resources>

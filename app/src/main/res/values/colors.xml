@@ -22,7 +22,7 @@
 
 
 
-    <string-array name="letterColor" type="color">
+    <string-array name="letterColor" type="color" translatable="false">
         <item name="purple">#8a8cb3</item>
         <item name="pink">#ff8c78</item>
         <item name="blue">#83d6d5</item>
