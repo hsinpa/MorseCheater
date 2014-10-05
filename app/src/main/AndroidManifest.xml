@@ -22,7 +22,7 @@
         <activity
             android:name=".EditPageFragment"
             android:label="@string/morseEdit"
-            android:parentActivityName="com.example.hsinpaul.morsecheater.Home" >
+            android:parentActivityName="com.hsinpaul.morseSecret.Home" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.hsinpaul.morsecheater.Home" />
@@ -31,7 +31,7 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName="com.example.hsinpaul.morsecheater.Home" >
+            android:parentActivityName="com.hsinpaul.morseSecret.Home" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.hsinpaul.morsecheater.Home" />

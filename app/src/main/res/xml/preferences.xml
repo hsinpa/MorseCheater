@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="wpm"
+        android:title="@string/wpm"
+        android:dialogTitle="@string/wpmSelection"
+        android:entries="@array/wpmSpeeds"
+        android:entryValues="@array/wpmActualSpeeds"
+        android:defaultValue="10" />
+
+</PreferenceScreen>

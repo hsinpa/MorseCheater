@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="action_settings">設置</string>
+
+    //MenuLabel
+    <string name="home">密碼列表</string>
+
+    <string name="morseCreate">新建項目</string>
+    <string name="morseEdit">編輯密碼</string>
+    <string name="editTitle">編輯開始</string>
+
+
+    //Button
+    <string name="cancel">取消</string>
+    <string name="submit">提交</string>
+
+    <string name="create">建立</string>
+    <string name="empty">空空的&#8230;</string>
+    <string name="edit">編輯</string>
+    <string name="play">播放</string>
+    <string name="save">保存</string>
+    <string name="upload">上傳</string>
+
+    //Placeholder
+    <string name="name">標題</string>
+
+    //Toast
+    <string name="success">完成</string>
+    <string name="wrongInput">格式錯誤</string>
+    <string name="ApiOutdated">可以去換機子了</string>
+
+
+    //Preference
+    <string name="wpm">WPM Speed</string>
+    <string name="wpmSelection">選擇你習慣的 WPM Speed</string>
+    <string name="language">語言</string>
+    <string name="languageSelection">選擇你喜歡的語言</string>
+
+    <string-array name="wpmSpeeds">
+        <item value="10">10 WPM</item>
+        <item value="20">20 WPM</item>
+        <item value="30">30 WPM</item>
+        <item value="40">40 WPM</item>
+    </string-array>
+
+</resources>
